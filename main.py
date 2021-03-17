@@ -38,20 +38,16 @@ print('Table without original class column: \n')
 print(df)
 print('\n-----------------------------------')
 
-# get all the symptoms columns
-# symptoms = list(df.columns)[:-8]
-# symptoms = list(df.columns)[:-2]
-symptoms = list(df.columns)
+# get all the columns
+iris = list(df.columns)
 
-# get the symptoms data
-data = df[symptoms]
-print("Data:\n", data)
-print('\n-----------------------------------')
+# get the iris data
+data = df[iris]
 
 # perform clustering here
 clustering_kmeans = KMeans(n_clusters=3, precompute_distances="auto", n_jobs=-1)
 data['clusters'] = clustering_kmeans.fit_predict(data)
-print("PREDICTED CLUSTERS \n", data)
+print("PREDICTED CLUSTERS \n", data.to_string())
 
 pca_num_components = 2
 
